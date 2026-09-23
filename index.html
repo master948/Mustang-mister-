@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Regular Mustangs On Me</title>
+  <style>
+    body{margin:0;font-family:'Courier New',monospace;background:black;color:white;text-align:center;overflow:hidden}
+    #screen1,#screen2,#screen3{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px}
+    #screen2,#screen3{display:none}
+    #screen1{background:radial-gradient(circle,#222 0%,black 100%)}
+    #screen1 h1{font-size:60px;color:red;text-shadow:0 0 20px red;animation:shake 0.5s infinite}
+    .small{font-size:20px;color:#aaa}.smaller{font-size:16px;color:#777}
+    #screen3{background-image:url('https://wallpapers.com/images/hd/spongebob-background-4r9qjt1a9a9q9o4y.jpg');background-size:cover;background-position:center}
+    .reveal-box{background:rgba(255,235,59,0.95);color:black;padding:30px;border-radius:20px;border:5px solid black;max-width:600px}
+    .punchline{font-size:24px;font-weight:bold;color:#d32f2f}
+    .subtitle{color:#666;font-style:italic}
+    .joke{font-style:italic}
+    button{padding:15px 35px;margin:15px;font-size:20px;font-weight:bold;border:3px solid white;border-radius:10px;cursor:pointer}
+    button:hover{transform:scale(1.1);background:red!important;color:white!important}
+    @keyframes shake{0%{transform:translateX(0)}25%{transform:translateX(-2px)}75%{transform:translateX(2px)}100%{transform:translateX(0)}}
+  </style>
+</head>
+<body>
+  <div id="screen1">
+    <h1>ENTER IF YOU DARE</h1>
+    <p class="subtitle">something scary waits inside...</p>
+    <button onclick="goToScreen2()">YES</button>
+    <button onclick="scared()">NO</button>
+    <p id="scaredText"></p>
+  </div>
+  <div id="screen2">
+    <h1>ARE YOU SURE? <span class="small">Are you sure?</span> <span class="smaller">Are you SURE?</span></h1>
+    <img src="https://i.kym-cdn.com/photos/images/original/001/211/814/a33.png" width="250">
+    <p>He's watching you...</p>
+    <button onclick="goToScreen3()">YES I'M SURE</button>
+    <button onclick="goBack()">NO GO BACK</button>
+  </div>
+  <div id="screen3">
+    <div class="reveal-box">
+      <h1>Regular Mustangs On Me 😂</h1>
+      <img src="https://media.tenor.com/3s2U1Pq6lQwAAAAi/spongebob-spongebob-doodle.gif" width="200">
+      <p class="joke">How do you like my new hobby huh Mr Plankton...</p>
+      <p class="punchline">FOOLED YOU! You thought it was scary?!</p>
+      <p>It's just my SpongeBob obsession site</p>
+      <button onclick="goBackToStart()">Scare Again</button>
+    </div>
+  </div>
+  <script>
+    function goToScreen2(){document.getElementById("screen1").style.display="none";document.getElementById("screen2").style.display="flex"}
+    function goToScreen3(){document.getElementById("screen2").style.display="none";document.getElementById("screen3").style.display="flex"}
+    function scared(){document.getElementById("scaredText").innerText="Too scared? Click YES then..."}
+    function goBack(){document.getElementById("screen2").style.display="none";document.getElementById("screen1").style.display="flex"}
+    function goBackToStart(){document.getElementById("screen3").style.display="none";document.getElementById("screen1").style.display="flex"}
+  </script>
+</body>
+</html>
