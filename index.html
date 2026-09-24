@@ -1,9 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>DO NOT ENTER</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body{margin:0;font-family:'Courier New',monospace;background:black;color:white;text-align:center;overflow:hidden}
-    #screen1,#screen2,#screen3{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px;transition:all 0.5s}
-    #screen2>
+<title>MASSIVE MONSTER MAYHEM</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:100%;min-height:100%;background:black;overflow-x:hidden;overflow-y:auto}
+  .screen{width:100vw;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
+  #screen1{background:radial-gradient(circle at center,#330000 0%,black 70%)}
+  #screen1 h1{font-size:3.5rem;color:red;text-shadow:0 0 15px red;animation:shake 0.25s infinite;font-family:Impact;text-align:center}
+  #screen2{background:black;display:none}
+  #screen3{background:#FFEB3B;display:none;position:relative;width:100vw;min-height:100vh}
+  .full-content{width:100%;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;padding:40px 20px;text-align:center;overflow-y:auto}
+  .big-title{font-size:3.5rem;font-weight:900;color:black;-webkit-text-stroke:2px yellow;text-shadow:5px 5px 0 black;font-family:Impact;line-height:1;margin-top:30px}
+  .punch{font-size:1.5rem;background:black;color:yellow;padding:15px 20px;transform:rotate(-2deg);margin:20px 0;font-weight:bold}
+  button{padding:16px 40px;margin:12px;font-size:20px;font-weight:900;border:4px solid black;cursor:pointer;background:white;color:black;box-shadow:6px 6px 0 black}
+  .loading{display:none;color:red;font-weight:bold;animation:blink 0.7s infinite;margin-top:15px}
+  @keyframes shake{0%{transform:translate(0)}25%{transform:translate(-3px,2px)}50%{transform:translate(3px,-2px)}100%{transform:translate(0)}}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+</style>
+</head>
+<body>
+
+<div id="screen1" class="screen">
+  <h1>BEHOLD MY MASTERPIECE</h1>
+  <p style="color:#777;letter-spacing:3px;margin-top:10px">YOU HAVE BEEN WARNED</p>
+  <div style="margin-top:30px">
+    <button onclick="go2()">YES</button>
+    <button onclick="document.getElementById('nope').innerText='TOO SCARED? 😂'">NO</button>
+  </div>
+  <p id="nope" style="color:red;margin-top:15px"></p>
+  <p id="load1" class="loading">LOADING GREATNESS...</p>
+</div>
+
+<div id="screen2" class="screen">
+  <h1 style="color:white;font-size:3rem;font-family:Impact">ARE YOU <span style="color:red">SURE?</span></h1>
+  <img src="https://i.imgflip.com/6u3h3k.jpg" width="300" style="margin:20px;border:5px solid red">
+  <p style="color:red">HE IS AN ENTREPRENEUR</p>
+  <p id="load2" class="loading">MY HEART IS POUNDING...</p>
+  <div>
+    <button onclick="go3()">YES I'M SURE</button>
+    <button onclick="back1()">NO GO BACK</button>
+  </div>
+</div>
+
+<div id="screen3">
+  <div class="full-content">
+    <img src="https://media.tenor.com/3s2U1Pq6lQwAAAAi/spongebob-spongebob-doodle.gif" width="280" style="filter:drop-shadow(6px 6px 0 black);border-radius:10px">
+    <div class="big-title">Regular<br>Mustangs On Me 😂</div>
+    <div class="punch">I AM OPTIMUS PRIME AUTOBOTS TRANSFORM AND ROAM OUT!</div>
+    <p style="font-style:italic;background:white;padding:10px;border:3px solid black">"How do you like my new hobby huh Mr Plankton...."</p>
+    <p style="margin-top:20px;font-weight:bold">Just my SpongeBob obsession site - MUSTANG GANG!</p>
+    <p style="margin-top:40px;padding-bottom:80px;color:#555">Scroll test -> If you see this, scrolling works!</p>
+    <button onclick="back1()">REPEAT</button>
+  </div>
+</div>
+
+<audio id="boom" src="https://www.myinstants.com/media/sounds/optimus-prime.mp3"></audio>
+<script>
+function go2(){document.getElementById('load1').style.display='block';document.getElementById('boom').play();setTimeout(()=>{document.getElementById('screen1').style.display='none';document.getElementById('screen2').style.display='flex'},2500)}
+function go3(){document.getElementById('load2').style.display='block';document.getElementById('boom').play();setTimeout(()=>{document.getElementById('screen2').style.display='none';document.getElementById('screen3').style.display='block'},3000)}
+function back1(){document.getElementById('screen2').style.display='none';document.getElementById('screen3').style.display='none';document.getElementById('screen1').style.display='flex';document.getElementById('load1').style.display='none';document.getElementById('load2').style.display='none';window.scrollTo(0,0)}
+</script>
+</body>
+  </html>
