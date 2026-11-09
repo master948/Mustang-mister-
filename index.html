@@ -2,102 +2,105 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DO NOT ENTER - You Were Warned</title>
+<title>THE MATRIX - Wake Up</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
-  body{background:#0a0a0a;color:#fff;font-family:system-ui, -apple-system, sans-serif;overflow-x:hidden}
-  
-  .screen{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:24px;text-align:center}
-  
-  .badge{background:#1a1a1a;border:1px solid #333;padding:6px 14px;border-radius:100px;font-size:12px;letter-spacing:2px;color:#888;margin-bottom:20px}
-  h1{font-size:clamp(36px,9vw,64px);line-height:0.95;font-weight:900;letter-spacing:-2px}
-  h1 span{color:#ff2d2d}
-  .sub{color:#888;font-size:16px;margin-top:16px;max-width:420px;line-height:1.5}
-  
-  .btn-row{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap;justify-content:center}
-  button{padding:15px 32px;font-size:16px;font-weight:800;border-radius:100px;border:none;cursor:pointer;transition:0.2s}
-  .btn-yes{background:#ff2d2d;color:white}
-  .btn-yes:hover{transform:scale(1.05);background:#ff4545}
-  .btn-no{background:#222;color:#ddd;border:1px solid #333}
-  .btn-no:hover{background:#333}
-  
-  #screen2{display:none;background:#0f0f0f}
-  .card{background:#161616;border:1px solid #262626;border-radius:24px;padding:28px;max-width:480px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.6)}
-  .card img{width:170px;height:170px;object-fit:cover;border-radius:50%;margin:20px auto;display:block;border:4px solid #ff2d2d}
-  .card h2{font-size:28px}
-  
-  #screen3{display:none;background:#fff;color:#111}
-  .final-card{background:white;border-radius:28px;padding:28px;max-width:520px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.2);text-align:center}
-  .final-card h1{font-size:clamp(30px,8vw,44px);color:#111}
-  .final-card img{width:100%;border-radius:18px;margin:18px 0}
-  .quote{background:#f5f5f5;padding:14px;border-radius:12px;font-style:italic;font-size:15px}
-  .black-bar{background:#111;color:#ffe600;padding:12px;border-radius:12px;font-weight:900;margin:16px 0;font-size:14px}
-  
-  .loading{display:none;color:#ff2d2d;font-weight:700;margin-top:16px;font-size:14px}
-  .footer{position:fixed;bottom:14px;width:100%;text-align:center;color:#444;font-size:11px;letter-spacing:1px}
+  body{background:#000;color:#00ff41;font-family:'Courier New',monospace;overflow:hidden;height:100vh}
+  canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;opacity:0.55}
+  .wrap{position:relative;z-index:1;height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:24px;text-align:center}
+  .top{font-size:11px;letter-spacing:4px;color:#4dff7a;opacity:0.7;margin-bottom:18px}
+  h1{font-size:clamp(38px,9vw,72px);line-height:1.02;font-weight:900;letter-spacing:-1px;text-shadow:0 0 25px #00ff41, 0 0 60px #00ff41}
+  h1 span{color:#fff;text-shadow:0 0 25px #fff}
+  .sub{margin-top:18px;color:#b6ffcc;font-size:16px;line-height:1.6;max-width:460px}
+  .pills{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap;justify-content:center}
+  button{padding:16px 30px;border-radius:100px;border:none;font-size:15px;font-weight:900;letter-spacing:1px;cursor:pointer;transition:0.25s}
+  .red{background:#ff1e2d;color:#fff;box-shadow:0 0 30px rgba(255,30,45,0.6)}
+  .red:hover{transform:scale(1.07);box-shadow:0 0 50px rgba(255,30,45,0.9)}
+  .blue{background:#1e6bff;color:#fff;box-shadow:0 0 30px rgba(30,107,255,0.6)}
+  .blue:hover{transform:scale(1.07);box-shadow:0 0 50px rgba(30,107,255,0.9)}
+  .hint{margin-top:28px;font-size:12px;color:#5a7a63;letter-spacing:1px;line-height:1.6}
+  .screen{display:none;height:100vh;flex-direction:column;justify-content:center;align-items:center;padding:24px;text-align:center;position:relative;z-index:1}
+  .card{background:rgba(0,20,8,0.75);backdrop-filter:blur(12px);border:1px solid rgba(0,255,65,0.3);border-radius:24px;padding:32px;max-width:520px;width:100%;box-shadow:0 30px 80px rgba(0,0,0,0.7)}
+  .card h2{font-size:clamp(28px,7vw,40px);line-height:1.1}
+  .card p{color:#c8ffda;margin-top:14px;line-height:1.6;font-size:15px}
+  .back{margin-top:24px;background:transparent;color:#00ff41;border:1px solid #00ff41}
+  .blue-card{border-color:rgba(80,140,255,0.4);background:rgba(0,10,30,0.75)}
+  .blue-card h2{color:#7db2ff;text-shadow:0 0 20px #1e6bff}
+  .footer{position:fixed;bottom:14px;left:0;width:100%;text-align:center;font-size:10px;letter-spacing:2px;color:#33523a;z-index:1}
 </style>
 </head>
 <body>
 
-<div id="screen1" class="screen">
-  <div class="badge">⚠️ WARNING • TOP SECRET</div>
-  <h1>BEHOLD MY<br><span>MASTERPIECE</span></h1>
-  <p class="sub">You have been warned. Once you enter, there is no going back. Are you brave enough?</p>
-  <div class="btn-row">
-    <button class="btn-yes" onclick="go2()">YES, SHOW ME →</button>
-    <button class="btn-no" onclick="document.getElementById('nope').innerText='LOL TOO SCARED 😂'">NO, I'M SCARED</button>
+<canvas id="rain"></canvas>
+
+<div id="home" class="wrap">
+  <div class="top">SYSTEM // SIGNAL FOUND // ZION</div>
+  <h1>WAKE UP,<br><span>NEO...</span></h1>
+  <p class="sub">The Matrix has you. Follow the white rabbit.<br>Knock, knock, Neo.</p>
+  <div class="pills">
+    <button class="red" onclick="show('red')">● TAKE RED PILL</button>
+    <button class="blue" onclick="show('blue')">● TAKE BLUE PILL</button>
   </div>
-  <p id="nope" style="color:#ff2d2d;margin-top:14px;font-weight:700"></p>
-  <p id="load1" class="loading">LISTEN... SOMETHING IS COMING...</p>
+  <p class="hint">RED = SEE HOW DEEP THE RABBIT HOLE GOES<br>BLUE = WAKE UP AND BELIEVE WHATEVER YOU WANT</p>
 </div>
 
-<div id="screen2" class="screen">
+<div id="red" class="screen">
   <div class="card">
-    <div class="badge" style="margin:0">LAST CHANCE</div>
-    <h2 style="margin-top:16px">ARE YOU <span style="color:#ff2d2d">SURE?</span></h2>
-    <img src="https://upload.wikimedia.org/wikipedia/en/3/3b/SpongeBob_SquarePants_character.svg">
-    <p style="color:#ff2d2d;font-weight:800">HE IS AN ENTREPRENEUR</p>
-    <p style="color:#888;margin-top:8px;font-size:14px">He knows what you did. He is behind you.</p>
-    <p id="load2" class="loading">HE IS BEHIND YOU...</p>
-    <div class="btn-row">
-      <button class="btn-yes" onclick="go3()">YES, I'M SURE</button>
-      <button class="btn-no" onclick="back1()">NO, GO BACK</button>
-    </div>
+    <div class="top">RED PILL TAKEN</div>
+    <h2>Welcome to the<br>Real World.</h2>
+    <p>You took the red pill. There is no going back now. You will see the truth. The code. The system. The war for Zion.</p>
+    <p style="color:#00ff41;font-weight:900">FREE YOUR MIND.</p>
+    <button class="back" onclick="show('home')">← BACK TO CHOICE</button>
   </div>
 </div>
 
-<div id="screen3" class="screen">
-  <div class="final-card">
-    <h1>Regular Mustangs<br>On Me 😂</h1>
-    <div class="black-bar">I AM OPTIMUS PRIME • AUTOBOTS TRANSFORM AND ROAM OUT!</div>
-    <img src="https://media1.tenor.com/m/1Dm6yV9P5V0AAAAC/spongebob.gif">
-    <p class="quote">"How do you like my new hobby huh Mr Plankton...."</p>
-    <p style="font-weight:800;margin-top:14px">ROARRR! 🐆 JUST KIDDING - MUSTANG GANG!</p>
-    <button class="btn-yes" onclick="back1()" style="background:#111;margin-top:18px;color:#ffe600">SCARE AGAIN ↻</button>
+<div id="blue" class="screen">
+  <div class="card blue-card">
+    <div class="top" style="color:#6aa4ff">BLUE PILL TAKEN</div>
+    <h2>You Wake Up<br>In Your Bed.</h2>
+    <p>You took the blue pill. The story ends. You wake up in your bed and believe whatever you want to believe.</p>
+    <p style="color:#7db2ff;font-weight:900">IGNORANCE IS BLISS.</p>
+    <button class="back" style="color:#7db2ff;border-color:#7db2ff" onclick="show('home')">← BACK TO CHOICE</button>
   </div>
 </div>
 
-<div class="footer">MADE FOR FUN • DO NOT ENTER IF YOU SCARE EASY</div>
+<div class="footer">THE MATRIX • FOLLOW THE WHITE RABBIT</div>
 
 <script>
-function go2(){
-  document.getElementById('load1').style.display='block';
-  setTimeout(()=>{document.getElementById('screen1').style.display='none';document.getElementById('screen2').style.display='flex';document.getElementById('load1').style.display='none'},900)
-}
-function go3(){
-  document.getElementById('load2').style.display='block';
-  setTimeout(()=>{
-    document.getElementById('screen2').style.display='none';
-    document.getElementById('screen3').style.display='flex';
-    document.getElementById('load2').style.display='none';
-  },1200)
-}
-function back1(){
-  document.getElementById('screen2').style.display='none';
-  document.getElementById('screen3').style.display='none';
-  document.getElementById('screen1').style.display='flex';
-  window.scrollTo(0,0)
-}
+  // MATRIX RAIN
+  const c = document.getElementById('rain');
+  const ctx = c.getContext('2d');
+  function resize(){ c.width = window.innerWidth; c.height = window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+  const chars = 'アカサタナハマヤラワ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ$#@%&';
+  const fontSize = 16;
+  let drops = [];
+  function initDrops(){ drops = []; let cols = Math.floor(c.width / fontSize); for(let i=0;i<cols;i++) drops[i] = Math.random() * -50; }
+  initDrops(); window.addEventListener('resize', initDrops);
+  function draw(){
+    ctx.fillStyle = 'rgba(0,0,0,0.08)';
+    ctx.fillRect(0,0,c.width,c.height);
+    ctx.fillStyle = '#00ff41';
+    ctx.font = fontSize + 'px monospace';
+    for(let i=0;i<drops.length;i++){
+      let ch = chars[Math.floor(Math.random()*chars.length)];
+      ctx.fillText(ch, i*fontSize, drops[i]*fontSize);
+      if(drops[i]*fontSize > c.height && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    }
+  }
+  setInterval(draw, 33);
+
+  // SCREEN SWITCH
+  function show(id){
+    document.getElementById('home').style.display = 'none';
+    document.getElementById('red').style.display = 'none';
+    document.getElementById('blue').style.display = 'none';
+    let el = document.getElementById(id);
+    el.style.display = (id === 'home') ? 'flex' : 'flex';
+    if(id === 'home') el.style.display = 'flex';
+    window.scrollTo(0,0);
+  }
 </script>
 </body>
  </html>
